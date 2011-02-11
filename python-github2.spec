@@ -2,10 +2,10 @@
 Summary:	Github API v2 library for Python
 Name:		python-%{module}
 Version:	0.2.0
-Release:	1
+Release:	2
 License:	New BSD License
 Group:		Development/Languages/Python
-Source0:	http://pypi.python.org/packages/source/g/github2/github2-%{version}.tar.gz
+Source0:	http://pypi.python.org/packages/source/g/github2/%{module}-%{version}.tar.gz
 # Source0-md5:	0b4e1d454b03450e818c51f4fb6fcf2c
 URL:		http://github.com/ask/python-github2
 BuildRequires:	python-distribute
@@ -32,6 +32,12 @@ rm -rf $RPM_BUILD_ROOT
 	--optimize=2 \
 	--root=$RPM_BUILD_ROOT
 
+# tests should be ran not packaged
+rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/tests
+
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
 %py_postclean
 
 %clean
@@ -43,4 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/github_manage_collaborators
 %dir %{py_sitescriptdir}/github2
 %{py_sitescriptdir}/github2/*.py[co]
+%if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/github2-*.egg-info
+%endif
+%{_examplesdir}/%{name}-%{version}
