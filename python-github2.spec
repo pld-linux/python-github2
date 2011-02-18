@@ -2,11 +2,12 @@
 Summary:	Github API v2 library for Python
 Name:		python-%{module}
 Version:	0.2.0
-Release:	2
+Release:	3
 License:	New BSD License
 Group:		Development/Languages/Python
-Source0:	http://pypi.python.org/packages/source/g/github2/%{module}-%{version}.tar.gz
-# Source0-md5:	0b4e1d454b03450e818c51f4fb6fcf2c
+#Source0:	http://pypi.python.org/packages/source/g/github2/%{module}-%{version}.tar.gz
+Source0:	https://github.com/patrys/python-github2/tarball/master#/%{module}-%{version}.tar.gz
+# Source0-md5:	5a99c1fc076e894eb39e3612546050ea
 URL:		http://github.com/ask/python-github2
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
@@ -16,11 +17,13 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This is an experimental python library implementing all of the
+This is an experimental Python library implementing all of the
 features available in version 2 of the Github API.
 
 %prep
-%setup -q -n %{module}-%{version}
+#setup -q -n %{module}-%{version}
+%setup -qc
+mv *-python-github2-*/* .
 
 %build
 %{__python} setup.py build
