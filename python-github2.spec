@@ -2,11 +2,12 @@
 Summary:	Github API v2 library for Python
 Name:		python-%{module}
 Version:	0.6.2
-Release:	2
+Release:	3
 License:	New BSD License
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/g/github2/%{module}-%{version}.tar.gz
 # Source0-md5:	1341655d6ca823c1e0cb7eacec68f99f
+Patch0:		dateutil.patch
 URL:		http://github.com/ask/python-github2
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
@@ -23,9 +24,7 @@ features available in version 2 of the Github API.
 
 %prep
 %setup -q -n %{module}-%{version}
-
-# fix something that doesn't make sense (there is no dateutil-2.1)
-%{__sed} -i -e 's/, >= 2.1//' github2.egg-info/requires.txt setup.py
+%patch0 -p1
 
 %build
 %{__python} setup.py build
