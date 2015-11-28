@@ -27,14 +27,11 @@ features available in version 2 of the Github API.
 %patch0 -p1
 
 %build
-%{__python} setup.py build
+%py_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install \
-	--skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
+%py_install
 
 # tests should be ran not packaged
 rm -rf $RPM_BUILD_ROOT%{py_sitescriptdir}/tests
