@@ -11,7 +11,7 @@ Patch0:		dateutil.patch
 URL:		http://github.com/ask/python-github2
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 Requires:	ca-certificates
 Requires:	python-httplib2
 Requires:	python-modules
