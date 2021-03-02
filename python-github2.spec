@@ -2,7 +2,7 @@
 Summary:	Github API v2 library for Python
 Name:		python-%{module}
 Version:	0.6.2
-Release:	4
+Release:	5
 License:	New BSD License
 Group:		Development/Languages/Python
 Source0:	http://pypi.python.org/packages/source/g/github2/%{module}-%{version}.tar.gz
